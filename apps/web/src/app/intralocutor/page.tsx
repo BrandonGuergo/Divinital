@@ -3,28 +3,70 @@ import { Container } from "@divinital/ui/components/container";
 import { Reveal } from "@divinital/ui/components/reveal";
 import { Section } from "@divinital/ui/components/section";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { ReadingPanel } from "@/components/intralocutor/reading-panel";
 import { siteConfig } from "@/config/site";
 import { getVenture } from "@/config/ventures";
 
 const venture = getVenture("intralocutor");
-if (!venture?.productUrl) {
-  throw new Error("Intralocutor requires a productUrl in the ventures registry.");
+if (!venture?.productUrl || !venture.logo) {
+  throw new Error("Intralocutor requires a productUrl and logo in the ventures registry.");
 }
 const intralocutor = venture;
 const appUrl = venture.productUrl;
+const logoUrl = venture.logo;
 
+const pageTitle = "Intralocutor — Read deeper with AI";
+const canonicalPath = intralocutor.path;
+const ogImage = {
+  url: logoUrl,
+  width: 480,
+  height: 480,
+  alt: "The Intralocutor grail mark",
+};
+
+// metadataBase (set in the root layout) resolves these relative URLs to absolute.
 export const metadata: Metadata = {
-  title: {
-    absolute: "Intralocutor — Read deeper with AI",
-  },
+  title: { absolute: pageTitle },
   description: intralocutor.description,
+  alternates: { canonical: canonicalPath },
   openGraph: {
-    title: "Intralocutor — Read deeper with AI",
+    title: pageTitle,
     description: intralocutor.description,
+    url: canonicalPath,
+    siteName: "Divinital",
     type: "website",
+    images: [ogImage],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: intralocutor.description,
+    images: [ogImage.url],
+  },
+};
+
+// Organization + WebSite structured data (JSON-LD) for richer indexing.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
+      name: "Divinital",
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/icon.svg`,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}${canonicalPath}#website`,
+      name: "Intralocutor",
+      url: `${siteConfig.url}${canonicalPath}`,
+      description: intralocutor.description,
+      publisher: { "@id": `${siteConfig.url}/#organization` },
+    },
+  ],
 };
 
 function IconChat(props: React.SVGProps<SVGSVGElement>) {
@@ -100,6 +142,10 @@ const features = [
 export default function IntralocutorPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Section className="relative overflow-hidden pt-20 sm:pt-28">
         <div
           aria-hidden="true"
@@ -109,14 +155,24 @@ export default function IntralocutorPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <Reveal>
-                <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent">
+                <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent-2">
                   Intralocutor
                 </p>
-                <h1 className="mt-5 font-serif text-5xl font-medium leading-[1.05] tracking-tight text-balance sm:text-6xl">
-                  Read deeper,
-                  <br />
-                  with AI beside you.
-                </h1>
+                <div className="mt-5 flex items-center gap-6">
+                  <h1 className="font-serif text-5xl font-medium leading-[1.05] tracking-tight text-balance sm:text-6xl">
+                    Read deeper,
+                    <br />
+                    with AI beside you.
+                  </h1>
+                  <Image
+                    src={logoUrl}
+                    alt="The Intralocutor grail mark — two faces in profile forming a chalice"
+                    width={280}
+                    height={280}
+                    priority
+                    className="hidden shrink-0 sm:block sm:size-48 lg:size-56"
+                  />
+                </div>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
                   Build lasting comprehension of any book. Intralocutor turns reading into a
                   conversation — for people who don&apos;t just consume books, they argue with
@@ -131,9 +187,6 @@ export default function IntralocutorPage() {
                       <span aria-hidden="true"> →</span>
                     </a>
                   </Button>
-                  <Button asChild size="lg" variant="ghost">
-                    <a href={siteConfig.url}>Meet the studio</a>
-                  </Button>
                 </div>
               </Reveal>
             </div>
@@ -144,7 +197,7 @@ export default function IntralocutorPage() {
         </Container>
       </Section>
 
-      <Section aria-labelledby="features-heading">
+      <Section id="features" aria-labelledby="features-heading" className="scroll-mt-24">
         <Container>
           <Reveal>
             <h2

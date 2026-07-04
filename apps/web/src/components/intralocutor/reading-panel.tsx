@@ -8,13 +8,8 @@ export function ReadingPanel() {
   return (
     <div aria-hidden="true" className="relative mx-auto w-full max-w-md">
       <div className="rounded-3xl border border-border bg-card p-6 shadow-xl shadow-black/5 sm:p-8">
-        <div className="flex items-center gap-2 pb-5">
-          <span className="size-2.5 rounded-full bg-border" />
-          <span className="size-2.5 rounded-full bg-border" />
-          <span className="size-2.5 rounded-full bg-border" />
-          <span className="ml-2 font-mono text-xs text-muted-foreground">
-            Meditations · Book IV
-          </span>
+        <div className="flex items-center pb-5">
+          <span className="font-mono text-xs text-muted-foreground">Meditations · Book IV</span>
         </div>
 
         <div className="space-y-3 font-serif text-[15px] leading-relaxed text-card-foreground">

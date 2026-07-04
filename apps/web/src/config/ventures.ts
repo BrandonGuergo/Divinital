@@ -18,6 +18,10 @@ export interface Venture {
   splashDomains: readonly string[];
   /** `data-theme` value that scopes this venture's brand tokens (see globals.css). */
   theme: string;
+  /** Path to the venture's logo mark under /public, rendered in its header. */
+  logo?: string;
+  /** Set true to render the header wordmark in the serif display face. */
+  wordmarkSerif?: boolean;
 }
 
 /**
@@ -38,6 +42,8 @@ export const ventures: readonly Venture[] = [
     productUrl: process.env.NEXT_PUBLIC_INTRALOCUTOR_APP_URL ?? "https://intralocutor.com",
     splashDomains: [],
     theme: "intralocutor",
+    logo: "/intralocutor/grail-logo.png",
+    wordmarkSerif: true,
   },
   {
     slug: "payshroud",
