@@ -4,7 +4,7 @@ import { Reveal } from "@divinital/ui/components/reveal";
 import { Section } from "@divinital/ui/components/section";
 import Link from "next/link";
 
-import { GridBackdrop } from "@/components/cyber/grid-backdrop";
+import { PlasmaField } from "@/components/backdrop/plasma-field";
 import { VentureCard } from "@/components/venture-card";
 import { siteConfig } from "@/config/site";
 import { ventures } from "@/config/ventures";
@@ -43,7 +43,7 @@ export default function HomePage() {
   return (
     <>
       <Section className="relative overflow-hidden pb-20 pt-28 sm:pt-36">
-        <GridBackdrop />
+        <PlasmaField />
         <Container className="relative">
           <div className="mx-auto max-w-3xl text-center">
             <Reveal>
@@ -159,7 +159,7 @@ export default function HomePage() {
             <div className="relative overflow-hidden rounded-3xl border border-border bg-card/40 px-8 py-20 text-center sm:px-16">
               <div
                 aria-hidden="true"
-                className="animate-aurora pointer-events-none absolute -top-1/2 left-1/2 size-[30rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]"
+                className="animate-plasma-pulse pointer-events-none absolute -top-1/2 left-1/2 size-[30rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]"
               />
               <div className="relative">
                 <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
