@@ -236,8 +236,7 @@ export default function IntralocutorPage() {
                 className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(50%_80%_at_50%_0%,var(--accent)_0%,transparent_70%)] opacity-[0.1]"
               />
               <blockquote className="mx-auto max-w-2xl font-serif text-2xl leading-relaxed text-balance sm:text-3xl">
-                &ldquo;A book you merely read is finished when you close it. A book you converse
-                with never quite isConversations with text, endlessly scaffolding insight.&rdquo;
+                &ldquo;Conversations with text, endlessly scaffolding insight.&rdquo;
               </blockquote>
               <Button asChild size="lg" className="mt-10">
                 <a href={appUrl}>
