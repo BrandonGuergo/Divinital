@@ -237,7 +237,7 @@ export default function IntralocutorPage() {
               />
               <blockquote className="mx-auto max-w-2xl font-serif text-2xl leading-relaxed text-balance sm:text-3xl">
                 &ldquo;A book you merely read is finished when you close it. A book you converse
-                with never quite is.&rdquo;
+                with never quite isConversations with text, endlessly scaffolding insight.&rdquo;
               </blockquote>
               <Button asChild size="lg" className="mt-10">
                 <a href={appUrl}>
