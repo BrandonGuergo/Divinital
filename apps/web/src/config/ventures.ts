@@ -66,13 +66,15 @@ export const ventures: readonly Venture[] = [
   {
     slug: "decynt",
     name: "Decynt",
-    tagline: "Intelligent software, built around your work.",
-    description: "Discover Decynt and see what we're building at decynt.com.",
+    tagline: "Make every open role accountable.",
+    description:
+      "Transparent hiring infrastructure with clear ownership, current funnel signals, process updates, and company context.",
     status: "live",
     path: "/decynt",
     productUrl: "https://decynt.com",
     splashDomains: [],
     theme: "decynt",
+    logo: "/decynt/thumbnail.png",
     externalOnly: true,
   },
 ];

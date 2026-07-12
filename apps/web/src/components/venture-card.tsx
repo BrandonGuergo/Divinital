@@ -1,4 +1,5 @@
 import { Card } from "@divinital/ui/components/card";
+import Image from "next/image";
 import Link from "next/link";
 
 import type { Venture } from "@/config/ventures";
@@ -8,7 +9,11 @@ export function VentureCard({ venture }: { venture: Venture }) {
   const href = venture.productUrl ?? venture.path;
 
   return (
-    <Card className="group relative h-full overflow-hidden bg-card/60 backdrop-blur transition-colors hover:border-accent/50">
+    <Card
+      data-theme={venture.theme}
+      className="venture-card group relative h-full overflow-hidden border-border bg-card text-card-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/60"
+    >
+      <div aria-hidden="true" className="venture-card-texture absolute inset-0" />
       {/* Hover glow — accent light that rises from the lower edge on hover. */}
       <div
         aria-hidden="true"
@@ -32,7 +37,25 @@ export function VentureCard({ venture }: { venture: Venture }) {
           </span>
         </div>
 
-        <h3 className="mt-5 text-2xl font-semibold tracking-tight">{venture.name}</h3>
+        <div className="mt-5 flex items-center gap-3">
+          {venture.logo ? (
+            <Image
+              src={venture.logo}
+              alt=""
+              aria-hidden="true"
+              width={52}
+              height={52}
+              className="venture-card-logo size-12 shrink-0 object-contain"
+            />
+          ) : null}
+          <h3
+            className={`text-2xl font-semibold tracking-tight ${
+              venture.wordmarkSerif ? "font-serif" : ""
+            }`}
+          >
+            {venture.name}
+          </h3>
+        </div>
         <p className="mt-2 text-sm font-medium text-muted-foreground">{venture.tagline}</p>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{venture.description}</p>
 

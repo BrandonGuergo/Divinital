@@ -16,6 +16,15 @@ export function SiteFooter() {
           <p className="mt-3 text-sm text-muted-foreground">
             A studio of focused digital ventures.
           </p>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Crafted with care by{" "}
+            <a
+              href="https://brandonguergo.com"
+              className="font-medium text-foreground underline decoration-accent/70 underline-offset-4 transition-colors hover:text-accent"
+            >
+              Brandon Guergo
+            </a>
+          </p>
         </div>
         <div className="flex gap-16">
           <nav aria-label="Ventures">

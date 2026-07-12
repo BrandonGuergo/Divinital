@@ -163,10 +163,10 @@ export default function HomePage() {
               />
               <div className="relative">
                 <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-                  Building something aligned?
+                  Questions? Concerns? Fan mail? 
                 </h2>
                 <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-                  I&apos;m always glad to hear from people who care about the same things I do.
+                  I&apos;m always glad to hear from people who care.
                 </p>
                 <Button
                   asChild
