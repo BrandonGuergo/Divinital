@@ -5,6 +5,7 @@ import type { Venture } from "@/config/ventures";
 
 export function VentureCard({ venture }: { venture: Venture }) {
   const isLive = venture.status === "live";
+  const href = venture.productUrl ?? venture.path;
 
   return (
     <Card className="group relative h-full overflow-hidden bg-card/60 backdrop-blur transition-colors hover:border-accent/50">
@@ -13,7 +14,7 @@ export function VentureCard({ venture }: { venture: Venture }) {
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-24 left-1/2 size-56 -translate-x-1/2 rounded-full bg-accent/15 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
       />
-      <Link href={venture.path} className="relative flex h-full flex-col p-6 sm:p-7">
+      <Link href={href} className="relative flex h-full flex-col p-6 sm:p-7">
         <span className="absolute right-6 top-6 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-accent">
           <span aria-hidden="true">↗</span>
         </span>

@@ -22,7 +22,25 @@ export interface Venture {
   logo?: string;
   /** Set true to render the header wordmark in the serif display face. */
   wordmarkSerif?: boolean;
+  /** Exclude ventures that exist only on their own domain from local route discovery. */
+  externalOnly?: boolean;
 }
+
+// Kept only so the dormant splash route continues to compile. Inactive ventures are not
+// rendered as cards, linked in navigation, included in the sitemap, or routed by domain.
+const inactiveVentures: readonly Venture[] = [
+  {
+    slug: "payshroud",
+    name: "PayShroud",
+    tagline: "Privacy-first payments for the modern web.",
+    description:
+      "Checkout without handing over your identity. PayShroud keeps your card details and purchase history out of merchant databases — launching soon.",
+    status: "waitlist",
+    path: "/payshroud",
+    splashDomains: ["payshroud.com", "www.payshroud.com"],
+    theme: "payshroud",
+  },
+];
 
 /**
  * The single source of truth for every Divinital venture. Adding a venture
@@ -46,18 +64,19 @@ export const ventures: readonly Venture[] = [
     wordmarkSerif: true,
   },
   {
-    slug: "payshroud",
-    name: "PayShroud",
-    tagline: "Privacy-first payments for the modern web.",
-    description:
-      "Checkout without handing over your identity. PayShroud keeps your card details and purchase history out of merchant databases — launching soon.",
-    status: "waitlist",
-    path: "/payshroud",
-    splashDomains: ["payshroud.com", "www.payshroud.com"],
-    theme: "payshroud",
+    slug: "decynt",
+    name: "Decynt",
+    tagline: "Intelligent software, built around your work.",
+    description: "Discover Decynt and see what we're building at decynt.com.",
+    status: "live",
+    path: "/decynt",
+    productUrl: "https://decynt.com",
+    splashDomains: [],
+    theme: "decynt",
+    externalOnly: true,
   },
 ];
 
 export function getVenture(slug: string): Venture | undefined {
-  return ventures.find((venture) => venture.slug === slug);
+  return [...ventures, ...inactiveVentures].find((venture) => venture.slug === slug);
 }

@@ -24,7 +24,7 @@ export function SiteFooter() {
               {ventures.map((venture) => (
                 <li key={venture.slug}>
                   <Link
-                    href={venture.path}
+                    href={venture.productUrl ?? venture.path}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {venture.name}

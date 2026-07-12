@@ -9,7 +9,7 @@ import { ventures } from "@/config/ventures";
 export const metadata: Metadata = {
   title: "Ventures",
   description:
-    "The Divinital family of products: Intralocutor, PayShroud, and the ventures still to come.",
+    "The Divinital family of products: Intralocutor, Decynt, and the ventures still to come.",
 };
 
 export default function VenturesPage() {
