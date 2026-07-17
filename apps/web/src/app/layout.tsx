@@ -16,10 +16,17 @@ export const metadata: Metadata = {
     template: "%s — Divinital",
   },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.founder.name, url: siteConfig.founder.url }],
+  creator: siteConfig.founder.name,
+  publisher: siteConfig.name,
+  category: "technology",
+  keywords: ["Divinital", "product studio", "software ventures", "Intralocutor"],
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
     url: siteConfig.url,
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Divinital is a product studio building a small family of focused software ventures, each held to a single standard of craft.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -31,14 +32,14 @@ export default function AboutPage() {
             <p>
               Divinital exists because good software is usually built by small teams who care
               about a specific problem — and diluted by everything that gets bolted on afterwards.
-              We keep our ventures separate so each one can stay sharp.
+              I keep the ventures separate so each one can stay sharp.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              Every product we run has its own identity, its own users, and its own reason to
+              Every product I run has its own identity, its own users, and its own reason to
               exist. What they share is underneath: one design system, one engineering standard,
-              and one belief that the people using our software deserve speed, clarity, and
+              and one belief that the people using my software deserve speed, clarity, and
               privacy by default.
             </p>
           </Reveal>

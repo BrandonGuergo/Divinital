@@ -2,6 +2,7 @@ import { Button } from "@divinital/ui/components/button";
 import { Container } from "@divinital/ui/components/container";
 import { Reveal } from "@divinital/ui/components/reveal";
 import { Section } from "@divinital/ui/components/section";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { PlasmaField } from "@/components/backdrop/plasma-field";
@@ -9,20 +10,27 @@ import { VentureCard } from "@/components/venture-card";
 import { siteConfig } from "@/config/site";
 import { ventures } from "@/config/ventures";
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
+// Zero-count rows read as inactivity, so only positive signals make the board.
 const signals = [
-  { label: "Ventures", value: String(ventures.length).padStart(2, "0") },
+  { label: "Ventures", value: ventures.length },
   {
     label: "Live",
-    value: String(ventures.filter((venture) => venture.status === "live").length).padStart(2, "0"),
+    value: ventures.filter((venture) => venture.status === "live").length,
   },
   {
     label: "In development",
-    value: String(ventures.filter((venture) => venture.status === "waitlist").length).padStart(
-      2,
-      "0",
-    ),
+    value: ventures.filter((venture) => venture.status === "waitlist").length,
   },
-] as const;
+]
+  .filter((signal) => signal.value > 0)
+  .map((signal) => ({ ...signal, value: String(signal.value).padStart(2, "0") }));
+
+const signalCols =
+  signals.length === 3 ? "grid-cols-3" : signals.length === 2 ? "grid-cols-2" : "grid-cols-1";
 
 const principles = [
   {
@@ -52,7 +60,6 @@ export default function HomePage() {
                 Product Studio
               </span>
               <h1 className="mt-7 text-5xl font-semibold leading-[1.03] tracking-tight text-balance sm:text-7xl">
-                {" "}
                 <span className="bg-gradient-to-br from-accent to-accent-2 bg-clip-text text-transparent">
                   Focused digital ventures
                 </span>
@@ -79,7 +86,9 @@ export default function HomePage() {
           </div>
 
           <Reveal delay={0.25}>
-            <dl className="mx-auto mt-20 grid max-w-2xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border">
+            <dl
+              className={`mx-auto mt-20 grid max-w-2xl gap-px overflow-hidden rounded-2xl border border-border bg-border ${signalCols}`}
+            >
               {signals.map((signal) => (
                 <div key={signal.label} className="bg-background/60 px-5 py-6 text-center backdrop-blur">
                   <dt className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted-foreground">
@@ -108,7 +117,13 @@ export default function HomePage() {
               Independent products, one standard of craft.
             </h2>
           </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div
+            className={
+              ventures.length === 1
+                ? "mt-12 grid max-w-xl gap-6"
+                : "mt-12 grid gap-6 sm:grid-cols-2"
+            }
+          >
             {ventures.map((venture, index) => (
               <Reveal key={venture.slug} delay={index * 0.1}>
                 <VentureCard venture={venture} />
@@ -163,7 +178,7 @@ export default function HomePage() {
               />
               <div className="relative">
                 <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-                  Questions? Concerns? Fan mail? 
+                  Questions? Concerns? Fan mail?
                 </h2>
                 <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
                   I&apos;m always glad to hear from people who care.

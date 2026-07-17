@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     description: payshroud.description,
     type: "website",
   },
+  // The venture is dormant — unlinked and out of the sitemap — so keep the
+  // orphaned route out of search indexes until it relaunches.
+  robots: { index: false, follow: false },
 };
 
 const pillars = [

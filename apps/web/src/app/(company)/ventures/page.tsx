@@ -4,17 +4,40 @@ import { Section } from "@divinital/ui/components/section";
 import type { Metadata } from "next";
 
 import { VentureCard } from "@/components/venture-card";
+import { siteConfig } from "@/config/site";
 import { ventures } from "@/config/ventures";
 
 export const metadata: Metadata = {
   title: "Ventures",
   description:
     "The Divinital family of products: Intralocutor, and the ventures still to come.",
+  alternates: { canonical: "/ventures" },
+};
+
+const venturesStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Divinital ventures",
+  itemListElement: ventures.map((venture, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "SoftwareApplication",
+      name: venture.name,
+      description: venture.description,
+      url: venture.productUrl ?? `${siteConfig.url}${venture.path}`,
+      applicationCategory: "WebApplication",
+    },
+  })),
 };
 
 export default function VenturesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(venturesStructuredData) }}
+      />
       <Section className="pt-24 sm:pt-32">
         <Container className="max-w-3xl">
           <Reveal>
@@ -32,7 +55,11 @@ export default function VenturesPage() {
 
       <Section className="pt-0">
         <Container>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div
+            className={
+              ventures.length === 1 ? "grid max-w-xl gap-6" : "grid gap-6 sm:grid-cols-2"
+            }
+          >
             {ventures.map((venture, index) => (
               <Reveal key={venture.slug} delay={index * 0.1}>
                 <VentureCard venture={venture} />

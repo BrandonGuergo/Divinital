@@ -22,7 +22,10 @@ export interface Venture {
   logo?: string;
   /** Set true to render the header wordmark in the serif display face. */
   wordmarkSerif?: boolean;
-  /** Exclude ventures that exist only on their own domain from local route discovery. */
+  /**
+   * Exclude ventures that live only on their own domain — including those whose
+   * local splash route just redirects there — from local route discovery (sitemap).
+   */
   externalOnly?: boolean;
 }
 
@@ -62,6 +65,9 @@ export const ventures: readonly Venture[] = [
     theme: "intralocutor",
     logo: "/intralocutor/grail-logo.png",
     wordmarkSerif: true,
+    // /intralocutor redirects straight to the live product, so keep the
+    // redirecting URL out of the sitemap.
+    externalOnly: true,
   }
   // {
   //   slug: "decynt",

@@ -19,10 +19,10 @@ export function SiteFooter() {
           <p className="mt-2 text-xs text-muted-foreground">
             Crafted with care by{" "}
             <a
-              href="https://brandonguergo.com"
+              href={siteConfig.founder.url}
               className="font-medium text-foreground underline decoration-accent/70 underline-offset-4 transition-colors hover:text-accent"
             >
-              Brandon Guergo
+              {siteConfig.founder.name}
             </a>
           </p>
         </div>
