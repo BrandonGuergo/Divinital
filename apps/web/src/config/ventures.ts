@@ -50,6 +50,17 @@ export const ventures: readonly Venture[] = [
     splashDomains: ["payshroud.com", "www.payshroud.com"],
     theme: "payshroud",
   },
+  // {
+  //   slug: "decynt",
+  //   name: "Decynt",
+  //   tagline: "Code intelligence that speaks human.",
+  //   description:
+  //     "An AI code assistant that understands not just your code, but its context and intent. Ask questions, get explanations, and write better software, faster.",
+  //   status: "waitlist",
+  //   path: "/decynt",
+  //   splashDomains: [],
+  //   theme: "decynt",
+  // },
 ];
 
 export function getVenture(slug: string): Venture | undefined {

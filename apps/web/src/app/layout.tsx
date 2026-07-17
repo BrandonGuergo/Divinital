@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import { siteConfig } from "@/config/site";
 
@@ -21,6 +21,14 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     url: siteConfig.url,
   },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
+export const viewport: Viewport = {
+  // Divinital's committed dark background — brands the mobile browser chrome.
+  themeColor: "#0d0e19",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
