@@ -46,9 +46,8 @@ export default function AboutPage() {
             <p>
               Today that family includes <strong className="text-foreground">Intralocutor</strong>,
               a reading companion for people who think alongside their books, and{" "}
-              <strong className="text-foreground">PayShroud</strong>, a privacy-first payments
-              product currently in pre-launch. More will follow — slowly, and only when they meet
-              the bar.
+              <strong className="text-foreground">Decynt</strong>. More will follow — slowly, and
+              only when they meet the bar.
             </p>
           </Reveal>
         </Container>

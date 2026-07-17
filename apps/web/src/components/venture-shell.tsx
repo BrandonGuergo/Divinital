@@ -1,4 +1,5 @@
 import { Container } from "@divinital/ui/components/container";
+import Image from "next/image";
 
 import { siteConfig } from "@/config/site";
 import type { Venture } from "@/config/ventures";
@@ -37,18 +38,36 @@ export function VentureShell({
       >
         Skip to content
       </a>
-      <header className="border-b border-border/60">
+      <header className="venture-header">
         <Container className="flex h-16 items-center justify-between gap-4">
           <a
             href={homeHref}
-            className="group inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
+            className="group inline-flex items-center gap-2 rounded-full border border-[color:var(--header-border)] px-3 py-1.5 text-sm text-[color:var(--header-muted)] transition-colors hover:border-[color:var(--header-fg)] hover:text-[color:var(--header-fg)]"
           >
             <span aria-hidden="true" className="transition-transform group-hover:-translate-x-0.5">
               ←
             </span>
             Divinital
           </a>
-          <span className="text-base font-semibold tracking-tight">{venture.name}</span>
+          <span
+            className={`inline-flex items-center gap-2.5 text-[color:var(--header-fg)] ${
+              venture.wordmarkSerif
+                ? "font-serif text-lg tracking-tight"
+                : "text-base font-semibold tracking-tight"
+            }`}
+          >
+            {venture.logo ? (
+              <Image
+                src={venture.logo}
+                alt=""
+                aria-hidden="true"
+                width={44}
+                height={44}
+                className="size-11"
+              />
+            ) : null}
+            {venture.name}
+          </span>
         </Container>
       </header>
       <main id="main" className="flex-1">

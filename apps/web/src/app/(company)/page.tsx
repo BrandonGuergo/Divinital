@@ -4,22 +4,30 @@ import { Reveal } from "@divinital/ui/components/reveal";
 import { Section } from "@divinital/ui/components/section";
 import Link from "next/link";
 
-import { GridBackdrop } from "@/components/cyber/grid-backdrop";
+import { PlasmaField } from "@/components/backdrop/plasma-field";
 import { VentureCard } from "@/components/venture-card";
 import { siteConfig } from "@/config/site";
 import { ventures } from "@/config/ventures";
 
 const signals = [
-  { label: "Active ventures", value: "02" },
-  { label: "Focus per product", value: "01" },
-  { label: "Founded", value: "2025" },
-  { label: "Compromises", value: "00" },
+  { label: "Ventures", value: String(ventures.length).padStart(2, "0") },
+  {
+    label: "Live",
+    value: String(ventures.filter((venture) => venture.status === "live").length).padStart(2, "0"),
+  },
+  {
+    label: "In development",
+    value: String(ventures.filter((venture) => venture.status === "waitlist").length).padStart(
+      2,
+      "0",
+    ),
+  },
 ] as const;
 
 const principles = [
   {
     title: "Craft over volume",
-    body: "We build a small number of products and hold each to a high bar. Every venture earns its place by being genuinely useful — not by filling a portfolio slide.",
+    body: "I build a small number of products and hold each to a high bar. Every venture earns its place by being genuinely useful — not by filling a portfolio.",
   },
   {
     title: "Focused by design",
@@ -27,7 +35,7 @@ const principles = [
   },
   {
     title: "Respect for people",
-    body: "Fast pages, honest pricing, and data practices we'd accept as users ourselves. Software should serve the person in front of it.",
+    body: "Fast pages, honest pricing, and data practices I'd accept as a user myself. Software should serve the person in front of it.",
   },
 ] as const;
 
@@ -35,7 +43,7 @@ export default function HomePage() {
   return (
     <>
       <Section className="relative overflow-hidden pb-20 pt-28 sm:pt-36">
-        <GridBackdrop />
+        <PlasmaField />
         <Container className="relative">
           <div className="mx-auto max-w-3xl text-center">
             <Reveal>
@@ -44,21 +52,22 @@ export default function HomePage() {
                 Product Studio
               </span>
               <h1 className="mt-7 text-5xl font-semibold leading-[1.03] tracking-tight text-balance sm:text-7xl">
-                A studio engineering{" "}
+                {" "}
                 <span className="bg-gradient-to-br from-accent to-accent-2 bg-clip-text text-transparent">
-                  focused digital ventures.
+                  Focused digital ventures
                 </span>
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                We design, build, and run a small family of software products — each with its own
-                name, its own users, and a single job it does exceptionally well.
+                Divinital is where I design, build, and run a small family of software products —
+                each with its own name, its own users, and a single job it does exceptionally
+                well.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <div className="mt-10 flex flex-wrap justify-center gap-4">
-                <Button asChild size="lg" className="shadow-[0_0_44px_-10px_var(--accent)]">
+                <Button asChild size="lg" className="shadow-[0_0_20px_-8px_var(--accent)]">
                   <Link href="/ventures">
-                    Explore our ventures
+                    Explore the ventures
                     <span aria-hidden="true"> →</span>
                   </Link>
                 </Button>
@@ -70,7 +79,7 @@ export default function HomePage() {
           </div>
 
           <Reveal delay={0.25}>
-            <dl className="mx-auto mt-20 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4">
+            <dl className="mx-auto mt-20 grid max-w-2xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border">
               {signals.map((signal) => (
                 <div key={signal.label} className="bg-background/60 px-5 py-6 text-center backdrop-blur">
                   <dt className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted-foreground">
@@ -119,7 +128,7 @@ export default function HomePage() {
               id="principles-heading"
               className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl"
             >
-              How we work
+              How I work
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
@@ -150,19 +159,19 @@ export default function HomePage() {
             <div className="relative overflow-hidden rounded-3xl border border-border bg-card/40 px-8 py-20 text-center sm:px-16">
               <div
                 aria-hidden="true"
-                className="animate-aurora pointer-events-none absolute -top-1/2 left-1/2 size-[30rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]"
+                className="animate-plasma-pulse pointer-events-none absolute -top-1/2 left-1/2 size-[30rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]"
               />
               <div className="relative">
                 <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-                  Building something aligned?
+                  Questions? Concerns? Fan mail? 
                 </h2>
                 <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-                  We&apos;re always glad to hear from people who care about the same things we do.
+                  I&apos;m always glad to hear from people who care.
                 </p>
                 <Button
                   asChild
                   size="lg"
-                  className="mt-9 font-mono shadow-[0_0_44px_-10px_var(--accent)]"
+                  className="mt-9 font-mono shadow-[0_0_20px_-8px_var(--accent)]"
                 >
                   <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
                 </Button>
