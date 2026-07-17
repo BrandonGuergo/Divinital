@@ -62,32 +62,21 @@ export const ventures: readonly Venture[] = [
     theme: "intralocutor",
     logo: "/intralocutor/grail-logo.png",
     wordmarkSerif: true,
-  },
-  {
-    slug: "decynt",
-    name: "Decynt",
-    tagline: "Make every open role accountable.",
-    description:
-      "Transparent hiring infrastructure with clear ownership, current funnel signals, process updates, and company context.",
-    status: "live",
-    path: "/decynt",
-    productUrl: "https://decynt.com",
-    splashDomains: [],
-    theme: "decynt",
-    logo: "/decynt/thumbnail.png",
-    externalOnly: true,
-  },
+  }
   // {
   //   slug: "decynt",
   //   name: "Decynt",
-  //   tagline: "Code intelligence that speaks human.",
+  //   tagline: "Make every open role accountable.",
   //   description:
-  //     "An AI code assistant that understands not just your code, but its context and intent. Ask questions, get explanations, and write better software, faster.",
-  //   status: "waitlist",
+  //     "Transparent hiring infrastructure with clear ownership, current funnel signals, process updates, and company context.",
+  //   status: "live",
   //   path: "/decynt",
+  //   productUrl: "https://decynt.com",
   //   splashDomains: [],
   //   theme: "decynt",
-  // },
+  //   logo: "/decynt/thumbnail.png",
+  //   externalOnly: true,
+  // }
 ];
 
 export function getVenture(slug: string): Venture | undefined {
