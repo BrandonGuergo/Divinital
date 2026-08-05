@@ -5,7 +5,7 @@ export const siteConfig = {
     "Divinital is a product studio building a family of focused digital ventures — software crafted with care, shipped with intent.",
   contactEmail: "divinital@protonmail.com",
   founder: {
-    name: "Brandon Guergo",
-    url: "https://brandonguergo.com",
+    name: "Brandon",
+    url: "",
   },
 } as const;
