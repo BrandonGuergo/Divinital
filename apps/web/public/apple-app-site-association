@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["TEAMID.com.brandonguergo.cottage"],
+        "components": [
+          {
+            "/": "/baker/*",
+            "comment": "A storefront link opens the app instead of the web page."
+          }
+        ]
+      }
+    ]
+  }
+}
