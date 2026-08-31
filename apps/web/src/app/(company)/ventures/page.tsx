@@ -10,7 +10,7 @@ import { ventures } from "@/config/ventures";
 export const metadata: Metadata = {
   title: "Ventures",
   description:
-    "The Divinital family of products: Intralocutor, and the ventures still to come.",
+    "The Divinital family of products: Intralocutor, Cottage, and the ventures still to come.",
   alternates: { canonical: "/ventures" },
 };
 

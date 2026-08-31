@@ -46,8 +46,10 @@ export default function AboutPage() {
           <Reveal>
             <p>
               Today that family includes <strong className="text-foreground">Intralocutor</strong>,
-              a reading companion for people who think alongside their books.
-              More will follow — only when they meet the bar.
+              a reading companion for people who think alongside their books, and{" "}
+              <strong className="text-foreground">Cottage</strong>, a live board of
+              what&apos;s fresh from Florida home kitchens nearby. More will follow — only when
+              they meet the bar.
             </p>
           </Reveal>
         </Container>

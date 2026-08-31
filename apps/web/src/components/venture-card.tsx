@@ -13,7 +13,7 @@ export function VentureCard({ venture }: { venture: Venture }) {
       data-theme={venture.theme}
       className="venture-card group relative h-full overflow-hidden border-border bg-card text-card-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/60"
     >
-      <div aria-hidden="true" className="venture-card-texture absolute inset-0" />
+      <div aria-hidden="true" className="venture-card-texture pointer-events-none absolute inset-0" />
       {/* Hover glow — accent light that rises from the lower edge on hover. */}
       <div
         aria-hidden="true"
@@ -46,6 +46,7 @@ export function VentureCard({ venture }: { venture: Venture }) {
               width={52}
               height={52}
               className="venture-card-logo size-12 shrink-0 object-contain"
+              unoptimized={venture.logo.endsWith(".svg")}
             />
           ) : null}
           <h3

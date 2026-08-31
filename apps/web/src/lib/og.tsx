@@ -39,6 +39,15 @@ export const intralocutorTheme: OgTheme = {
   accent2: "#9c6a35",
 };
 
+/** Cottage — kitchen cream paper, crust brown ink. */
+export const cottageTheme: OgTheme = {
+  background: "#f5ebd8",
+  foreground: "#2c1810",
+  muted: "#6b4a32",
+  accent: "#7a4a1c",
+  accent2: "#5c3514",
+};
+
 /** PayShroud — dark, secure fintech: emerald accent. */
 export const payshroudTheme: OgTheme = {
   background: "#0c0f14",

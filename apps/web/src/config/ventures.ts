@@ -116,7 +116,20 @@ export const ventures: readonly Venture[] = [
     // /intralocutor redirects straight to the live product, so keep the
     // redirecting URL out of the sitemap.
     externalOnly: true,
-  }
+  },
+  {
+    slug: "cottage",
+    name: "Cottage",
+    tagline: "What's fresh from Florida home kitchens nearby.",
+    description:
+      "A storefront for the baker, a bulletin board for the neighbor. Cottage is a live board of what's coming out of home ovens — pickup in person, or posted in the mail, with no marketplace taking a cut.",
+    status: "live",
+    path: "/cottage",
+    splashDomains: [],
+    theme: "cottage",
+    logo: "/cottage/mark.svg",
+    wordmarkSerif: true,
+  },
   // {
   //   slug: "decynt",
   //   name: "Decynt",
