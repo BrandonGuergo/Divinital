@@ -64,6 +64,7 @@ export function VentureShell({
                 width={44}
                 height={44}
                 className="size-11"
+                unoptimized={venture.logo.endsWith(".svg")}
               />
             ) : null}
             {venture.name}

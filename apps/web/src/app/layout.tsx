@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   creator: siteConfig.founder.name,
   publisher: siteConfig.name,
   category: "technology",
-  keywords: ["Divinital", "product studio", "software ventures", "Intralocutor"],
+  keywords: ["Divinital", "product studio", "software ventures", "Intralocutor", "Cottage"],
   openGraph: {
     type: "website",
     siteName: siteConfig.name,

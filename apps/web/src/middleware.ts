@@ -9,20 +9,37 @@ for (const venture of ventures) {
   }
 }
 
+const cottagePolicyPages = new Map([
+  ["/support", "/support/index.html"],
+  ["/privacy", "/privacy/index.html"],
+  ["/terms", "/terms/index.html"],
+]);
+
 /**
  * Serves venture splash pages on their own domains from this single
  * deployment: a request to payshroud.com/ is rewritten to /payshroud
  * without changing the visitor's URL. Domains not registered in the
  * ventures config (divinital.com itself) pass through untouched.
+ *
+ * Cottage's policy pages live as static HTML under /public. Next would
+ * otherwise 404 `/support` while serving `/support/index.html`, so those
+ * three paths are rewritten here.
  */
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const policyPage = cottagePolicyPages.get(pathname.replace(/\/$/, "") || pathname);
+  if (policyPage) {
+    const url = request.nextUrl.clone();
+    url.pathname = policyPage;
+    return NextResponse.rewrite(url);
+  }
+
   const host = request.headers.get("host")?.split(":")[0]?.toLowerCase();
   const basePath = host ? domainToPath.get(host) : undefined;
   if (!basePath) {
     return NextResponse.next();
   }
 
-  const { pathname } = request.nextUrl;
   if (pathname === basePath || pathname.startsWith(`${basePath}/`)) {
     return NextResponse.next();
   }
