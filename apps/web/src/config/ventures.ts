@@ -1,5 +1,37 @@
 export type VentureStatus = "live" | "waitlist";
 
+/** A measurable result worth putting in front of a reader — users, latency, scale, timeline. */
+export interface CaseStudyMetric {
+  label: string;
+  value: string;
+}
+
+export interface CaseStudyImage {
+  /** Path under /public, by convention /work/<slug>/<file>. */
+  src: string;
+  alt: string;
+}
+
+/**
+ * Long-form portfolio content for a venture. Present only on ventures that are
+ * shown as work; a venture without this is still a venture, just not a case
+ * study, so nothing here is required to keep the marketing pages compiling.
+ */
+export interface CaseStudy {
+  /** What it does, in one sentence. */
+  summary: string;
+  /** The hardest technical problem in it, and how it was solved. */
+  challenge: string;
+  /** Technologies rendered as badges on the case-study page. */
+  stack?: readonly string[];
+  metrics?: readonly CaseStudyMetric[];
+  screenshots?: readonly CaseStudyImage[];
+  /** Public repository, omitted when the source is private. */
+  sourceUrl?: string;
+  /** Sort order in the work index; lower sorts first. Unset sorts last. */
+  priority?: number;
+}
+
 export interface Venture {
   slug: string;
   name: string;
@@ -27,6 +59,22 @@ export interface Venture {
    * local splash route just redirects there — from local route discovery (sitemap).
    */
   externalOnly?: boolean;
+  /**
+   * Portfolio content. Adding this to a venture is what promotes it into the
+   * work index and gives it a case-study route — no separate registry.
+   */
+  caseStudy?: CaseStudy;
+}
+
+/** Ventures that carry portfolio content, ordered for the work index. */
+export function getWork(): readonly Venture[] {
+  return ventures
+    .filter((venture) => venture.caseStudy)
+    .sort(
+      (a, b) =>
+        (a.caseStudy?.priority ?? Number.MAX_SAFE_INTEGER) -
+        (b.caseStudy?.priority ?? Number.MAX_SAFE_INTEGER),
+    );
 }
 
 // Kept only so the dormant splash route continues to compile. Inactive ventures are not
