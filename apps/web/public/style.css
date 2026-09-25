@@ -108,7 +108,9 @@ a:focus:not(:focus-visible) {
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
   gap: var(--space-s) var(--space-xl);
 }
 
