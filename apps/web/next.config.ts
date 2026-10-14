@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
       { source: "/privacy/", destination: "/privacy/index.html" },
       { source: "/terms", destination: "/terms/index.html" },
       { source: "/terms/", destination: "/terms/index.html" },
+      { source: "/baker/:id", destination: "/baker/index.html" },
     ];
   },
 };

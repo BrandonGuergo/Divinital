@@ -248,6 +248,110 @@ li::marker {
   overflow-wrap: anywhere;
 }
 
+/* /baker/<id> — one maker's shelf, read-only. */
+
+.storefront {
+  padding: var(--space-xl) var(--space-l) var(--space-xxl);
+  overflow-wrap: break-word;
+  background: var(--card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+}
+
+.storefront-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: var(--space-xl);
+  border-radius: var(--radius-control);
+}
+
+.storefront-photo[hidden] {
+  display: none;
+}
+
+.storefront h1 {
+  margin-bottom: var(--space-s);
+}
+
+.storefront-town {
+  color: var(--crust);
+  font-weight: 600;
+}
+
+.get-app {
+  margin-block: var(--space-xl);
+  padding: var(--space-xl);
+  background: var(--tint);
+  border-radius: var(--radius-control);
+}
+
+.get-app h2 {
+  margin: 0 0 var(--space-m);
+}
+
+.button {
+  display: block;
+  padding: var(--space-m) var(--space-xl);
+  background: var(--crust);
+  color: var(--card);
+  border-radius: var(--radius-control);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.shelf {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shelf-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-l);
+  padding: 0;
+}
+
+.shelf-item + .shelf-item {
+  margin-top: var(--space-l);
+  padding-top: var(--space-l);
+  border-top: 1px solid var(--hairline);
+}
+
+.shelf-item img {
+  flex: none;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  border-radius: var(--radius-control);
+}
+
+.shelf-item p {
+  margin: 0;
+}
+
+.shelf-name {
+  font-weight: 600;
+}
+
+.shelf-detail {
+  color: var(--crust);
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 40rem) {
+  .storefront {
+    padding: var(--space-xxl) var(--space-xl) 2.5rem;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
@@ -260,7 +364,12 @@ li::marker {
     --shadow: none;
   }
 
-  .policy {
+  .policy,
+  .storefront {
     box-shadow: inset 0 0 0 0.5px var(--hairline);
+  }
+
+  .button {
+    color: var(--cream);
   }
 }
